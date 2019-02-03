@@ -7,7 +7,7 @@ class YoutubeListDownloaderConan(ConanFile):
     version = "1.0.0"
     license = "MIT"
     author = "Linus Kloeckner (linus.kloeckner@googlemail.com)"
-    url = "https://github.com/Linux13524/Youtube-List-Downloader"
+    url = "https://github.com/Linux13524/YoutubeListDownloader"
     description = "Multiplatform library for downloading Youtube content"
     topics = ("youtube", "download", "video", "playlist", "channel")
     settings = "os", "compiler", "build_type", "arch"
