@@ -14,14 +14,14 @@ The packages generated with this **conanfile** can be found on [Bintray](https:/
 
 ### Basic setup
 
-    $ conan install youtube_list_downloader/1.0.0@youtube_list_downloader/1
+    $ conan install youtube_list_downloader/1.0.0@linux13524/testing
 
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
 
     [requires]
-    youtube_list_downloader/1.0.0@youtube_list_downloader/1
+    youtube_list_downloader/1.0.0@linux13524/testing
 
     [generators]
     cmake
@@ -37,7 +37,7 @@ Note: It is recommended that you run conan install from a build directory and no
 
 The following command both runs all the steps of the conan file, and publishes the package to the local system cache.  This includes downloading dependencies from "build_requires" and "requires" , and then running the build() method.
 
-    $ conan create . youtube_list_downloader/1
+    $ conan create . linux13524/testing
 
 
 ### Available Options
@@ -49,9 +49,9 @@ The following command both runs all the steps of the conan file, and publishes t
 
 ## Add Remote
 
-    $ conan remote add youtube_list_downloader "https://api.bintray.com/conan/youtube_list_downloader/conan"
+    $ conan remote add linux13524 "https://api.bintray.com/conan/linux13524/conan"
 
 
 ## License
 
-[MIT](https://github.com/Linux13524/Youtube-List-Downloader/blob/1/1.0.0/LICENSE.md)
+[MIT](https://github.com/Linux13524/Youtube-List-Downloader/blob/testing/1.0.0/LICENSE.md)
