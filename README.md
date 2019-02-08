@@ -6,7 +6,7 @@
 
 Multiplatform library for downloading Youtube content
 
-The packages generated with this **conanfile** can be found on [Bintray](https://bintray.com/youtube_list_downloader/conan/youtube_list_downloader%3Ayoutube_list_downloader).
+The packages generated with this **conanfile** can be found on [Bintray](https://bintray.com/linux13524/conan/youtube_list_downloader%3Alinux13524).
 
 
 
