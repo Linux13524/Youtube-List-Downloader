@@ -6,4 +6,5 @@ int main() {
     Youtube::Video video = Youtube::Video::Get("s8XIgR5OGJc");
     video.LoadDownloadLinks();
     video.PrintFormats();
+    Youtube::Video::Download(video, {37, 22, 18});
 }

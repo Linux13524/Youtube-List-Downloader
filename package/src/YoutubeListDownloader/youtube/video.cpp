@@ -5,6 +5,7 @@
 #include "YoutubeDecipher/decipher.h"
 #include "YoutubeListDownloader/logger.h"
 #include "YoutubeListDownloader/sql/dbs.h"
+#include "YoutubeListDownloader/utils/downloader.h"
 #include "YoutubeListDownloader/utils/fs.h"
 #include "YoutubeListDownloader/youtube/format.h"
 #include "nowide/convert.hpp"
@@ -219,15 +220,12 @@ void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_it
 
         LogInfo() << p_video.GetId() << " : Download - " << format.GetString();
 
-        auto response = cpr::Get(cpr::Url{quality.m_url},
-                                 cpr::VerifySsl{false},                 // cpr currently not supports ca files
-                                 cpr::Header{{"Range", "bytes=0-"}});   // without slow download only
-
-        if (response.status_code < 300) {
-            nowide::ofstream stream{p.string(), std::ofstream::binary};
-
-            stream << response.text;
-        }
+        auto downloader = FileDownloader::Instance();
+        downloader.AttachCallback([](double p_dl_now_mb, double p_dl_total_mb, double p_speed_mbs) {
+            std::cout << std::fixed << std::setprecision(2) << "DOWN: " << p_dl_now_mb << " mb of " << p_dl_total_mb << " mb speed " << p_speed_mbs << " mb/s \r";
+            std::cout.flush();
+        });
+        downloader.Download(quality.m_url, p.string());
 
         return;
     }
