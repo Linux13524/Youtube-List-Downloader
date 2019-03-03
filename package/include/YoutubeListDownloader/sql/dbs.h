@@ -3,6 +3,8 @@
 #ifndef INCLUDE_SQL_DBS_H_
 #define INCLUDE_SQL_DBS_H_
 
+#include "YoutubeListDownloader/utils/fs.h"
+
 #include "json/json.hpp"
 
 #include <SQLiteCpp/Database.h>
@@ -24,12 +26,9 @@ namespace Youtube {
 class SQL {
  public:
     static SQL& Instance() {
-#ifdef ANDROID
-        boost::filesystem::path p{R"(/data/data/de.linux13524.youtube_list_downloader/databases/)"};
+
+        boost::filesystem::path p = Filesystem::Settings::Instance().GetDbPath();
         boost::filesystem::create_directories(p);
-#else
-        boost::filesystem::path p{boost::filesystem::current_path()};
-#endif
         p.append("youtube.db3");
         static SQL s_instance{p.string()};
         return s_instance;
