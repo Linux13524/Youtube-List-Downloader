@@ -20,7 +20,6 @@ class YoutubeListDownloaderConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        os.mkdir("build")
         cmake.configure(source_folder="package")
         cmake.build()
 
@@ -28,8 +27,11 @@ class YoutubeListDownloaderConan(ConanFile):
         cmake = CMake(self)
         cmake.configure(source_folder="package")
         cmake.install()
-
+        # Copy sources for debugging
+        if self.settings.build_type == "Debug":
+            self.copy("*.cpp", dst="src", src="package/src")
 
     def package_info(self):
         LIB_POSTFIX = "-d" if self.settings.build_type == "Debug" else ""
         self.cpp_info.libs = ["YoutubeListDownloader" + LIB_POSTFIX]
+        self.cpp_info.srcdirs = "src"
