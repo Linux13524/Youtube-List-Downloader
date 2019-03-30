@@ -30,13 +30,18 @@ namespace Filesystem {
         inline void SetDbPath(const boost::filesystem::path& p_db_path) {
             m_current_db_path = p_db_path;
         }
+        inline void SetVideoPath(const boost::filesystem::path& p_video_path) {
+            m_current_video_path = p_video_path;
+        }
 
         inline boost::filesystem::path GetDbPath() { return m_current_db_path; }
+        inline boost::filesystem::path GetVideoPath() { return m_current_video_path; }
 
      private:
         Settings() = default;
 
         boost::filesystem::path m_current_db_path{boost::filesystem::current_path()};
+        boost::filesystem::path m_current_video_path{boost::filesystem::current_path().append("videos")};
     };
 }   // namespace Filesystem
 
