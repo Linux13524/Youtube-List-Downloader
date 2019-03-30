@@ -205,9 +205,6 @@ void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_it
 
         boost::filesystem::path p{p_folder};
 
-        if (!boost::filesystem::exists(p))
-            boost::filesystem::create_directory(p);
-
         p.append(filename);
 
         nowide::ifstream file{p.string()};
@@ -233,13 +230,8 @@ void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_it
 }
 
 void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_itags) {
-#ifdef ANDROID
-    boost::filesystem::path p{R"(/data/data/de.linux13524.youtube_list_downloader/)"};
-#else
-    boost::filesystem::path p{boost::filesystem::current_path()};
-#endif
-
-    p.append("videos");
+    boost::filesystem::path p = Filesystem::Settings::Instance().GetVideoPath();
+    boost::filesystem::create_directories(p);
 
     Download(p_video, p_itags, p);
 }
