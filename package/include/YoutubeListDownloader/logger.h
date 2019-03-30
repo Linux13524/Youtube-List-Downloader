@@ -3,7 +3,7 @@
 #ifndef INCLUDE_LOGGER_H_
 #define INCLUDE_LOGGER_H_
 
-static const char* const LOG_TAG = "Youtube-List-Downloader";
+static const char* const LOG_TAG = "YoutubeListDownloader";
 
 #ifdef ANDROID
 
