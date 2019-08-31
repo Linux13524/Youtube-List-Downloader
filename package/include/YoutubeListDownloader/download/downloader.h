@@ -1,6 +1,6 @@
 
-#ifndef LIBCURLTEST_DOWNLOADER_H
-#define LIBCURLTEST_DOWNLOADER_H
+#ifndef INCLUDE_DOWNLOAD_DOWNLOADER_H
+#define INCLUDE_DOWNLOAD_DOWNLOADER_H
 
 #include <curl/curl.h>
 #include <functional>
@@ -41,4 +41,4 @@ private:
     } m_progress;
 };
 
-#endif   //LIBCURLTEST_DOWNLOADER_H
+#endif   //INCLUDE_DOWNLOAD_DOWNLOADER_H

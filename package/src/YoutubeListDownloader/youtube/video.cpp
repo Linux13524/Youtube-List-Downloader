@@ -3,9 +3,9 @@
 #include "YoutubeListDownloader/youtube/video.h"
 
 #include "YoutubeDecipher/decipher.h"
+#include "YoutubeListDownloader/download/downloader.h"
 #include "YoutubeListDownloader/logger.h"
 #include "YoutubeListDownloader/sql/dbs.h"
-#include "YoutubeListDownloader/utils/downloader.h"
 #include "YoutubeListDownloader/utils/fs.h"
 #include "YoutubeListDownloader/youtube/format.h"
 #include "nowide/convert.hpp"

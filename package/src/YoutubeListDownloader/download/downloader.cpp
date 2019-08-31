@@ -1,5 +1,5 @@
 
-#include "YoutubeListDownloader/utils/downloader.h"
+#include "YoutubeListDownloader/download/downloader.h"
 #include <fstream>
 #include <nowide_standalone/nowide/fstream.hpp>
 
