@@ -29,6 +29,7 @@ add_subdirectory(lib/nowide_standalone EXCLUDE_FROM_ALL)
 set(Headers
         include/YoutubeListDownloader/sql/dbs.h
         include/YoutubeListDownloader/download/downloader.h
+        include/YoutubeListDownloader/download/options.h
         include/YoutubeListDownloader/utils/fs.h
         include/YoutubeListDownloader/utils/working_queue.h
         include/YoutubeListDownloader/youtube/channel.h
