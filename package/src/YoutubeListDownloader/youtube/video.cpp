@@ -200,6 +200,9 @@ void Youtube::Video::Download(const Video& p_video, const Download::Options& p_o
         Format format = Youtube::g_FORMATS[quality.m_itag];
 
         std::string filename{p_video.GetId()};
+        if (p_options.m_save_video_name)
+            filename = p_video.GetTitle();
+
         filename.append(".");
         filename.append(format.container);
 
