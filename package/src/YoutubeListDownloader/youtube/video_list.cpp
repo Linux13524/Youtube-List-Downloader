@@ -121,9 +121,8 @@ void Youtube::VideoList::LoadVideosPage(const json& p_json_page) {
     }
 }
 
-void Youtube::VideoList::DownloadVideos(std::vector<int> p_qualities,
-                                        const std::function<void(size_t, size_t)>& p_f,
-                                        const boost::filesystem::path& p_folder) {
+void Youtube::VideoList::DownloadVideos(const std::function<void(size_t, size_t)>& p_f,
+                                        const Download::Options& p_options) {
     auto videos = GetVideos();
 
     auto f_progress = [&p_f, &videos](size_t progress) {
@@ -134,10 +133,7 @@ void Youtube::VideoList::DownloadVideos(std::vector<int> p_qualities,
     Utils::WorkingQueue pool(false, 1, f_progress);
 
     for (auto& video : videos) {
-        if (p_folder.empty())
-            pool.AddTask(boost::bind(&Youtube::Video::Download, video, p_qualities));
-        else
-            pool.AddTask(boost::bind(&Youtube::Video::Download, video, p_qualities, p_folder));
+            pool.AddTask(boost::bind(&Youtube::Video::Download, video, p_options));
     }
     pool.Start();
 }
