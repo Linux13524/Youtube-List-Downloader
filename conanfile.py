@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
 
 class YoutubeListDownloaderConan(ConanFile):
     name = "youtube_list_downloader"
-    version = "1.0.1"
+    version = "1.0.2"
     license = "MIT"
     author = "Linus Kloeckner (linus.kloeckner@googlemail.com)"
     url = "https://github.com/Linux13524/YoutubeListDownloader"

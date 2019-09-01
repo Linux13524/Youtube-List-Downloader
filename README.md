@@ -1,6 +1,6 @@
 [![Download](https://api.bintray.com/packages/linux13524/conan/youtube_list_downloader%3Alinux13524/images/download.svg) ](https://bintray.com/linux13524/conan/youtube_list_downloader%3Alinux13524/_latestVersion)
-[![Build Status Travis](https://travis-ci.com/Linux13524/YoutubeListDownloader.svg?branch=testing%2F1.0.0)](https://travis-ci.com/Linux13524/YoutubeListDownloader)
-[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/linux13524/youtubelistdownloader?branch=testing%2F1.0.0&svg=true)](https://ci.appveyor.com/project/linux13524/youtubelistdownloader)
+[![Build Status Travis](https://travis-ci.com/Linux13524/YoutubeListDownloader.svg?branch=testing%2F1.0.2)](https://travis-ci.com/Linux13524/YoutubeListDownloader)
+[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/linux13524/youtubelistdownloader?branch=testing%2F1.0.2&svg=true)](https://ci.appveyor.com/project/linux13524/youtubelistdownloader)
 
 ## Conan package recipe for *youtube_list_downloader*
 
@@ -14,14 +14,14 @@ The packages generated with this **conanfile** can be found on [Bintray](https:/
 
 ### Basic setup
 
-    $ conan install youtube_list_downloader/1.0.0@linux13524/testing
+    $ conan install youtube_list_downloader/1.0.2@linux13524/testing
 
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
 
     [requires]
-    youtube_list_downloader/1.0.0@linux13524/testing
+    youtube_list_downloader/1.0.2@linux13524/testing
 
     [generators]
     cmake
@@ -54,4 +54,4 @@ The following command both runs all the steps of the conan file, and publishes t
 
 ## License
 
-[MIT](https://github.com/Linux13524/Youtube-List-Downloader/blob/testing/1.0.0/LICENSE.md)
+[MIT](https://github.com/Linux13524/Youtube-List-Downloader/blob/testing/1.0/LICENSE.md)

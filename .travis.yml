@@ -1,7 +1,7 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "youtube_list_downloader/1.0.1"
+     - CONAN_REFERENCE: "youtube_list_downloader/1.0.2"
      - CONAN_USERNAME: "linux13524"
      - CONAN_LOGIN_USERNAME: "linux13524"
      - CONAN_CHANNEL: "testing"
