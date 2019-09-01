@@ -4,7 +4,7 @@ project(YoutubeListDownloader)
 include(cmake/tools.cmake)
 include(cmake/conan.cmake)
 
-set(PROJECT_VERSION 1.0.1)
+set(PROJECT_VERSION 1.0.2)
 
 ### Platform dependend
 if (MINGW)
