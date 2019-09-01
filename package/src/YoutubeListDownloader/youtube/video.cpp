@@ -181,8 +181,8 @@ void Youtube::Video::PrintFormats() const {
     }
 }
 
-void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_itags, const boost::filesystem::path& p_folder) {
-    for (auto itag : p_itags) {
+void Youtube::Video::Download(const Video& p_video, const Download::Options& p_options) {
+    for (auto itag : p_options.m_itags) {
         auto& video_qualities = p_video.GetQualities();
 
         auto pred = [itag](const Video::Quality& q) { return q.m_itag == itag; };
@@ -203,7 +203,9 @@ void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_it
         filename.append(".");
         filename.append(format.container);
 
-        boost::filesystem::path p{p_folder};
+        boost::filesystem::create_directories(p_options.m_path);
+
+        boost::filesystem::path p{p_options.m_path};
 
         p.append(filename);
 
@@ -227,11 +229,4 @@ void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_it
         return;
     }
     LogWarn() << p_video.GetId() << " : Could not find suitable itag for video";
-}
-
-void Youtube::Video::Download(const Video& p_video, const std::vector<int>& p_itags) {
-    boost::filesystem::path p = Filesystem::Settings::Instance().GetVideoPath();
-    boost::filesystem::create_directories(p);
-
-    Download(p_video, p_itags, p);
 }

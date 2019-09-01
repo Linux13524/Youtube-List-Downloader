@@ -3,7 +3,8 @@
 #ifndef INCLUDE_YOUTUBE_VIDEO_H_
 #define INCLUDE_YOUTUBE_VIDEO_H_
 
-#include "youtube.h"
+#include "YoutubeListDownloader/download/options.h"
+#include "YoutubeListDownloader/youtube/youtube.h"
 #include "json/json.hpp"
 
 #include <boost/filesystem.hpp>
@@ -39,8 +40,7 @@ namespace Youtube {
         void LoadThumbnail();
         void LoadDownloadLinks();
         void PrintFormats() const;
-        static void Download(const Video& p_video, const std::vector<int>& p_itags);
-        static void Download(const Video& p_video, const std::vector<int>& p_itags, const boost::filesystem::path& p_folder);
+        static void Download(const Video& p_video, const Download::Options& p_options = Download::Options::GlobalOptions());
 
         const std::vector<Quality>& GetQualities() const { return m_qualities; }
 

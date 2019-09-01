@@ -3,8 +3,9 @@
 #ifndef INCLUDE_YOUTUBE_VIDEO_LIST_H_
 #define INCLUDE_YOUTUBE_VIDEO_LIST_H_
 
+#include "YoutubeListDownloader/download/options.h"
 #include "YoutubeListDownloader/utils/working_queue.h"
-#include "youtube.h"
+#include "YoutubeListDownloader/youtube/youtube.h"
 #include "json/json.hpp"
 
 #include <boost/filesystem.hpp>
@@ -26,9 +27,8 @@ namespace Youtube {
         virtual const std::string GetPlaylistId() const = 0;
 
         std::unique_ptr<boost::thread> LoadVideos();
-        void DownloadVideos(std::vector<int> p_qualities,
-                            const std::function<void(size_t, size_t)>& p_f = [](size_t, size_t) {},
-                            const boost::filesystem::path& p_folder = {});
+        void DownloadVideos(const std::function<void(size_t, size_t)>& p_f = [](size_t, size_t) {},
+                            const Download::Options& p_options = Download::Options::GlobalOptions());
 
         json GetItem() const { return m_item; }
         const std::vector<Video>& GetVideos() const { return m_videos; }
