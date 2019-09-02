@@ -161,9 +161,17 @@ void Youtube::Video::LoadDownloadLinks() {
         boost::replace_all(url, "%3F", "?");
 
         if (!signature.empty()) {
+            boost::replace_all(signature, "%25", "%");
+            boost::replace_all(signature, "%26", "&");
+            boost::replace_all(signature, "%2C", ",");
+            boost::replace_all(signature, "%2F", "/");
+            boost::replace_all(signature, "%3A", ":");
+            boost::replace_all(signature, "%3D", "=");
+            boost::replace_all(signature, "%3F", "?");
+
             Decipher::Instance(html_response.text).DecipherSignature(&signature);
 
-            url.append("&signature=");
+            url.append("&sig=");
             url.append(signature);
         }
 
