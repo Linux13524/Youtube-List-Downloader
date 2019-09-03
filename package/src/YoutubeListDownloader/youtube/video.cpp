@@ -6,9 +6,7 @@
 #include "YoutubeListDownloader/download/downloader.h"
 #include "YoutubeListDownloader/logger.h"
 #include "YoutubeListDownloader/sql/dbs.h"
-#include "YoutubeListDownloader/utils/fs.h"
 #include "YoutubeListDownloader/youtube/format.h"
-#include "nowide/convert.hpp"
 #include "nowide/fstream.hpp"
 #include "nowide/cstdio.hpp"
 
@@ -184,7 +182,7 @@ void Youtube::Video::PrintFormats() const {
     auto qualities = GetQualities();
     std::sort(qualities.begin(), qualities.end());
 
-    for (auto quality : qualities) {
+    for (const auto& quality : qualities) {
         Format format = Youtube::g_FORMATS[quality.m_itag];
         LogInfo() << quality.m_itag << ": " << format.GetString();
     }

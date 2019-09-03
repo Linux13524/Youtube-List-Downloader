@@ -17,8 +17,8 @@ namespace Youtube {
      public:
         static Playlist Get(const std::string& p_id);
 
-        inline const std::string GetChannelId() const { return Check(GetStatus()) ? GetItem()["snippet"]["channelId"] : ""; }
-        inline const std::string GetPlaylistId() const override { return GetId(); };
+        inline std::string GetChannelId() const { return Check(GetStatus()) ? GetItem()["snippet"]["channelId"] : ""; }
+        inline std::string GetPlaylistId() const override { return GetId(); };
 
      private:
         Playlist() = default;
