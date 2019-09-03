@@ -39,6 +39,7 @@ namespace Youtube {
 
         void LoadThumbnail();
         void LoadDownloadLinks();
+        void LoadDownloadLinks(int p_retries, int p_min_itag_count = 5);
         void PrintFormats() const;
         static void Download(const Video& p_video, const Download::Options& p_options = Download::Options::GlobalOptions());
 

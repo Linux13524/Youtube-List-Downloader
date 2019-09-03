@@ -113,7 +113,7 @@ void Youtube::VideoList::LoadVideosPage(const json& p_json_page) {
         Video video = Video::Get(current_video_id);
 
         video.LoadThumbnail();
-        video.LoadDownloadLinks();
+        video.LoadDownloadLinks(3);
 
         m_videos.push_back(video);
 

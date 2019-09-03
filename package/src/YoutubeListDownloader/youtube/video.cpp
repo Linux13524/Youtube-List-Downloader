@@ -78,6 +78,14 @@ void Youtube::Video::LoadThumbnail() {
     SQL::Instance().InsertThumbnail(GetId(), thumbnail_response.text);
 }
 
+void Youtube::Video::LoadDownloadLinks(int p_retries, int p_min_itag_count) {
+    auto tries = 0;
+    while (tries < p_retries && m_qualities.size() < p_min_itag_count) {
+        LoadDownloadLinks();
+        tries++;
+    }
+}
+
 void Youtube::Video::LoadDownloadLinks() {
     boost::format fmt{"/watch?v=%1%"};
     fmt % GetId();
