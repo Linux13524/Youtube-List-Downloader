@@ -62,6 +62,7 @@ int FileDownloader::ProgressCallback(void* p_progress,
         double speed_mbs = dl_diff / time_diff / 1024.0 / 1024.0;
         progress->last_runtime = cur_time;
         progress->last_dl = p_dl_now;
+        progress->total_dl = dl_total_mb;
 
         if (progress->callback) {
             progress->callback(dl_now_mb, dl_total_mb, speed_mbs);

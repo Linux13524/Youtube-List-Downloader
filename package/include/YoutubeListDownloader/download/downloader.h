@@ -8,6 +8,14 @@
 
 class FileDownloader {
 public:
+    struct Progress {
+        double last_runtime = 0;
+        double last_dl = 0;
+        double total_dl = 0;
+        CURL* curl = nullptr;
+        std::function<void(double, double, double)> callback = nullptr;
+    };
+
     static FileDownloader& Instance() {
         static FileDownloader s_instance{};
         return s_instance;
@@ -16,6 +24,8 @@ public:
     ~FileDownloader() {
         curl_global_cleanup();
     }
+
+    inline const Progress& GetProgress() const { return m_progress; }
 
     void Download(const std::string& p_url, const std::string& p_path);
     void AttachCallback(const std::function<void(double, double, double)>& p_callback) {
@@ -33,12 +43,7 @@ private:
                                 curl_off_t p_dl_total, curl_off_t p_dl_now,
                                 curl_off_t p_ul_total, curl_off_t p_ul_now);
 
-    struct Progress {
-        double last_runtime = 0;
-        double last_dl = 0;
-        CURL* curl = nullptr;
-        std::function<void(double, double, double)> callback = nullptr;
-    } m_progress;
+    Progress m_progress;
 };
 
 #endif   //INCLUDE_DOWNLOAD_DOWNLOADER_H

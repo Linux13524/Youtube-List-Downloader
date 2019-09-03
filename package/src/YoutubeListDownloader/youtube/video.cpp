@@ -10,6 +10,7 @@
 #include "YoutubeListDownloader/youtube/format.h"
 #include "nowide/convert.hpp"
 #include "nowide/fstream.hpp"
+#include "nowide/cstdio.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
@@ -236,6 +237,13 @@ void Youtube::Video::Download(const Video& p_video, const Download::Options& p_o
             std::cout.flush();
         });
         downloader.Download(quality.m_url, p.string());
+
+        // Check if something was downloaded
+        if (downloader.GetProgress().total_dl == 0) {
+            LogWarn() << "Nothing was downloaded! URL may be corrupt:"
+                      << "\nURL: " << quality.m_url;
+            nowide::remove(p.string().c_str());
+        }
 
         return;
     }
