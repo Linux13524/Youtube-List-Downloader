@@ -29,11 +29,11 @@ namespace Youtube {
 
         static Video Get(const std::string& p_id);
 
-        inline const std::string GetId() const { return Check(m_status) ? m_item["id"] : ""; }
-        inline const std::string GetChannelId() const { return Check(m_status) ? m_item["snippet"]["channelId"] : ""; }
-        inline const std::string GetTitle() const { return Check(m_status) ? m_item["snippet"]["title"] : ""; }
-        inline const std::string GetDescription() const { return Check(m_status) ? m_item["snippet"]["description"] : ""; }
-        inline const std::vector<std::string> GetTags() const {
+        inline std::string GetId() const { return Check(m_status) ? m_item["id"] : ""; }
+        inline std::string GetChannelId() const { return Check(m_status) ? m_item["snippet"]["channelId"] : ""; }
+        inline std::string GetTitle() const { return Check(m_status) ? m_item["snippet"]["title"] : ""; }
+        inline std::string GetDescription() const { return Check(m_status) ? m_item["snippet"]["description"] : ""; }
+        inline std::vector<std::string> GetTags() const {
             return Check(m_status) ? m_item["snippet"]["tags"].get<std::vector<std::string>>() : std::vector<std::string>();
         }
 

@@ -22,17 +22,17 @@ namespace Youtube {
 
     class VideoList {
      public:
-        inline const std::string GetId() const { return Check(m_status) ? m_item["id"] : ""; }
-        inline const std::string GetTitle() const { return Check(m_status) ? m_item["snippet"]["title"] : ""; }
-        virtual const std::string GetPlaylistId() const = 0;
+        inline std::string GetId() const { return Check(m_status) ? m_item["id"] : ""; }
+        inline std::string GetTitle() const { return Check(m_status) ? m_item["snippet"]["title"] : ""; }
+        virtual std::string GetPlaylistId() const = 0;
 
         std::unique_ptr<boost::thread> LoadVideos();
         void DownloadVideos(const std::function<void(size_t, size_t)>& p_f = [](size_t, size_t) {},
                             const Download::Options& p_options = Download::Options::GlobalOptions());
 
-        json GetItem() const { return m_item; }
+        const json& GetItem() const { return m_item; }
         const std::vector<Video>& GetVideos() const { return m_videos; }
-        Status GetStatus() const { return m_status; }
+        const Status& GetStatus() const { return m_status; }
 
      protected:
         VideoList() = default;
