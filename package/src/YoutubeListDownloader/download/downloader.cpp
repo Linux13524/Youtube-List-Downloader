@@ -25,6 +25,7 @@ void FileDownloader::Download(const std::string& p_url, const std::string& p_pat
     curl_easy_setopt(curl, CURLOPT_HEADER, 0L);
     curl_easy_setopt(curl, CURLOPT_URL, p_url.c_str());
     curl_easy_setopt(curl, CURLOPT_RANGE, "0-");
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_VERBOSE, 0L);
     curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
